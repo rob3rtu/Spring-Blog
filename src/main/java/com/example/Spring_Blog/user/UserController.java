@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +22,14 @@ public class UserController {
     }
 
     @Operation(summary = "Get all users", description = "Get all users from the db.")
-    @GetMapping
+    @GetMapping("/all")
     public List<User> getUsers() {
         return userService.getUsers();
+    }
+
+    @Operation(summary = "User login", description = "Login a user")
+    @PostMapping("/login")
+    public String login() {
+        return "User is logged in";
     }
 }
